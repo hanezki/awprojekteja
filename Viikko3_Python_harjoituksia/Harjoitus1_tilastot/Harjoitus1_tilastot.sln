@@ -1,0 +1,23 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31727.386
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{888888A0-9F3D-457C-B088-3A5042F75D52}") = "Harjoitus1_tilastot", "Harjoitus1_tilastot\Harjoitus1_tilastot.pyproj", "{E9228C9A-C21D-4A06-8E0D-F26EB48E233C}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{E9228C9A-C21D-4A06-8E0D-F26EB48E233C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E9228C9A-C21D-4A06-8E0D-F26EB48E233C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {0647AB35-4F3C-4C4F-A27C-4C28DA109ECE}
+	EndGlobalSection
+EndGlobal
