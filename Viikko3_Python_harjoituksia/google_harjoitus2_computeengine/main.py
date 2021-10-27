@@ -122,5 +122,37 @@ def create_instance1(
     return instance
 
 
-create_instance1(PROJECT_NAME, ZONE_NAME, INSTANCE_NAME)
+def stop_instance(instance_id):
+    """
+    Stop a Compute Engine VM instance
+    """
+
+    print('Stopping VM instance ...')
+    print('Instance Id: ' + instance_id)
+
+    # Stop VM instance
+    compute.instances().stop(
+          project=PROJECT_NAME,
+          zone=ZONE_NAME,
+          instance=INSTANCE_NAME).execute()
+
+    return
+
+
+def start_instance(instance_id):
+    """
+    Start a Compute Engine VM instance
+    """
+
+    print('Starting VM instance ...')
+    print('Instance Id: ' + instance_id)
+
+    # Start VM instance
+    compute.instances().start(
+          project=PROJECT_NAME,
+          zone=ZONE_NAME,
+          instance=INSTANCE_NAME).execute()
+
+    return
+
 
