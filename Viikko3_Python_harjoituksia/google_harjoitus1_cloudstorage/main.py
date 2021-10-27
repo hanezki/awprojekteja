@@ -29,6 +29,7 @@ def upload_blob(bucket_name, source_file_name, destination_blob_name):
     print(f"File {source_file_name} uploaded to {destination_blob_name}")
 
 
+#download file from bucket
 def download_blob(bucket_name, source_blob_name, destination_file_name):
     bucket = storage_client.bucket(bucket_name)
     blob = bucket.blob(source_blob_name)
@@ -36,4 +37,13 @@ def download_blob(bucket_name, source_blob_name, destination_file_name):
 
     print(f"Downloaded storage object {source_blob_name} from bucket {bucket_name} to local file {destination_file_name}")
 
-download_blob("juukeli", "teksti.txt", "juukelispuukelis.txt")
+
+def delete_blob(bucket_name, blob_name):
+    bucket = storage_client.bucket(bucket_name)
+    blob = bucket.blob(blob_name)
+    blob.delete()
+
+    print(f"Blob {blob_name} deleted")
+
+
+delete_blob("juukeli", "teksti.txt")
