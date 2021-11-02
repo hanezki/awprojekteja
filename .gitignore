@@ -351,3 +351,6 @@ MigrationBackup/
 
 # PyCharm
 .idea
+
+# Databases
+database.ini
