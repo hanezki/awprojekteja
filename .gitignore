@@ -353,4 +353,4 @@ MigrationBackup/
 .idea
 
 # Databases
-database.ini
+src/data/database.ini
