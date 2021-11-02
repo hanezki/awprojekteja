@@ -353,4 +353,4 @@ MigrationBackup/
 .idea
 
 # Databases
-Viikko4_Python_harjoituksia/src/data/database.ini
+database.ini
