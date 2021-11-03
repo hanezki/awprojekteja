@@ -58,3 +58,25 @@ WHERE Id = 2;
 
 -- delete from table
 DELETE FROM person WHERE id = 1;
+
+-- find all with condition
+SELECT * FROM city WHERE country_code = 'FIN';
+
+-- laske yhteen
+SELECT SUM(population) FROM city WHERE country_code = 'USA';
+
+-- listaa jollain conditionilla
+SELECT name FROM city WHERE population BETWEEN 1000000 AND 2000000 LIMIT 15;
+
+-- näytä maa jolla korkein life expectancy
+-- noinspection SqlShouldBeInGroupBy
+
+SELECT lifeexpectancy, name
+FROM country
+WHERE lifeexpectancy IS NOT NULL
+GROUP BY name, lifeexpectancy
+ORDER BY lifeexpectancy DESC
+LIMIT 1;
+
+
+
