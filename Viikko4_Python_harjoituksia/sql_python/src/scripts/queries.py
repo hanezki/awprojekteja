@@ -5,18 +5,11 @@ con = None
 try:
     con = psycopg2.connect(**config())
     cursor = con.cursor()
-    '''
-    SQL = "SELECT person.name, certificates.name " \
-          "FROM person INNER JOIN certificates " \
-          "ON person.id = certificates.person_id " \
-          "WHERE certificates.name = 'GCP';"
-    '''
-    cert_name = 'AWS'
-    person_id = 2
-    SQL = "INSERT INTO certificates (name, person_id) VALUES (%s, %s);"
-    record_to_insert = (cert_name, person_id)
-    cursor.execute(SQL, record_to_insert)
+
+    SQL = "CREATE TABLE dogs (id SERIAL PRIMARY KEY,name varchar(255) NOT NULL,breed varchar(255) NOT NULL);"
+    cursor.execute(SQL)
     con.commit()
+
     cursor.execute("SELECT * FROM certificates")
     rows = cursor.fetchall()
     for row in rows:
