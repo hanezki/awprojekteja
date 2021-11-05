@@ -6,14 +6,36 @@ sql_list = []
 
 
 def lisaa_astiat():
-    SQL1 = "INSERT INTO Astia (nimi, lkm) VALUES ('Muki', 100);"
-    SQL2 = "INSERT INTO Astia (nimi, lkm) VALUES ('Lasi', 80);"
-    SQL3 = "INSERT INTO Astia (nimi, lkm) VALUES ('Iso lautanen', 40);"
-    SQL4 = "INSERT INTO Astia (nimi, lkm) VALUES ('Pieni lautanen', 40);"
+    sql_list.clear()
+    SQL1 = "INSERT INTO Astia (nimi, lkm, toimipaikka_id) VALUES ('Muki', 100, 1);"
+    SQL2 = "INSERT INTO Astia (nimi, lkm, toimipaikka_id) VALUES ('Lasi', 80, 1);"
+    SQL3 = "INSERT INTO Astia (nimi, lkm, toimipaikka_id) VALUES ('Iso lautanen', 40, 1);"
+    SQL4 = "INSERT INTO Astia (nimi, lkm, toimipaikka_id) VALUES ('Pieni lautanen', 40, 1);"
     sql_list.append(SQL1)
     sql_list.append(SQL2)
     sql_list.append(SQL3)
     sql_list.append(SQL4)
+    suorita_sql(sql_list)
+
+def paivita():
+    sql_list.clear()
+    SQL = "UPDATE Astia SET lkm = 100 WHERE nimi = 'Lasi';"
+    sql_list.append(SQL)
+    suorita_sql(sql_list)
+
+
+def lisaa():
+    sql_list.clear()
+    SQL = "INSERT INTO Astia (nimi, lkm, toimipaikka_id) VALUES ('Muki', 100, 2);"
+    SQL2 = "INSERT INTO Astia (nimi, lkm, toimipaikka_id) VALUES ('Muki', 100, 3);"
+    sql_list.append(SQL)
+    sql_list.append(SQL2)
+    suorita_sql(sql_list)
+
+def poista():
+    sql_list.clear()
+    SQL = "DELETE FROM Astia WHERE nimi = 'Pieni lautanen' AND toimipaikka_id = 1;"
+    sql_list.append(SQL)
     suorita_sql(sql_list)
 
 
@@ -23,13 +45,17 @@ def tulosta_astiat():
     try:
         con = psycopg2.connect(**config())
         cursor = con.cursor()
-        SQL = "SELECT * FROM Astia"
+        SQL = "SELECT Astia.nimi, Astia.lkm, Toimipaikka.sijainti FROM Astia INNER JOIN Toimipaikka ON Astia.toimipaikka_id = Toimipaikka.id;"
         cursor.execute(SQL)
         rows = cursor.fetchall()
+
         for row in rows:
-            nimi = row[1]
-            lkm = row[2]
-            print(f"{nimi}, {lkm}kpl")
+            nimi = row[0]
+            lkm = row[1]
+            toimipaikka = row[2]
+            print(f"{toimipaikka}: {nimi}, {lkm}kpl")
+
+
         cursor.close()
     except (Exception, psycopg2.DatabaseError) as error:
         print(error)
@@ -41,6 +67,7 @@ def tulosta_astiat():
 # Tämmöne ois näppärä jos ois enemmän funktioita jotka jollain tavalla
 # muokkaa tietokannan sisältöä
 def suorita_sql(sql_list_to_execute):
+
     con = None
     try:
         con = psycopg2.connect(**config())
@@ -59,4 +86,7 @@ def suorita_sql(sql_list_to_execute):
 
 if __name__ == "__main__":
     #lisaa_astiat()
+    #paivita()
+    #lisaa()
+    #poista()
     tulosta_astiat()
