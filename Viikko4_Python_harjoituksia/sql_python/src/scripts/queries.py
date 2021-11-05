@@ -1,5 +1,5 @@
 import psycopg2
-from config import config as config
+from config import config
 
 con = None
 try:

@@ -2,6 +2,7 @@ import psycopg2
 from config import config as config
 import PIL.Image as Image
 
+
 con = None
 try:
     con = psycopg2.connect(**config())
