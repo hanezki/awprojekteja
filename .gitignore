@@ -356,4 +356,4 @@ MigrationBackup/
 database.ini
 
 # Terraform
-.tfvars
+*.tfvars
